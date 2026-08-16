@@ -1,0 +1,418 @@
+:root {
+  --color-ink: #2b2a33;
+  --color-ink-soft: #6b6875;
+  --color-paper: #f6f3fa;
+  --color-card: #ffffff;
+  --color-border: #e4defc;
+
+  --accent-coral: #ff6f61;
+  --accent-mint: #2fb6a6;
+  --accent-sun: #ffb648;
+  --accent-violet: #8c7ae6;
+  --accent-sky: #4f9dff;
+
+  --shadow-soft: 0 10px 24px rgba(43, 42, 51, 0.08);
+  --shadow-strong: 0 16px 32px rgba(43, 42, 51, 0.14);
+
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body: "Be Vietnam Pro", "Segoe UI", sans-serif;
+
+  --radius-card: 16px;
+}
+
+:root[data-theme="dark"] {
+  --color-ink: #f1eef7;
+  --color-ink-soft: #b9b4c9;
+  --color-paper: #1a1822;
+  --color-card: #242231;
+  --color-border: #35304a;
+
+  --accent-coral: #ff8577;
+  --accent-mint: #3fd0bd;
+  --accent-sun: #ffc766;
+  --accent-violet: #a394f0;
+  --accent-sky: #6cb0ff;
+
+  --shadow-soft: 0 10px 24px rgba(0, 0, 0, 0.35);
+  --shadow-strong: 0 16px 32px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+a {
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--accent-sky);
+  outline-offset: 2px;
+}
+
+.app-navbar {
+  background-color: var(--color-card);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.app-navbar__brand {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--color-ink);
+}
+
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-icon:hover {
+  transform: translateY(-2px);
+  background-color: var(--color-border);
+}
+
+.app-tagline {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.app-tagline h1 {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  margin-bottom: 0.4rem;
+}
+
+.app-tagline p {
+  color: var(--color-ink-soft);
+  margin: 0;
+}
+
+.controls-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+}
+
+.search-box {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.search-box .form-control,
+.search-box .input-group-text {
+  background-color: transparent;
+  border: none;
+  color: var(--color-ink);
+}
+
+.search-box .form-control:focus {
+  box-shadow: none;
+}
+
+.filter-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.filter-chip {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+  color: var(--color-ink-soft);
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.filter-chip:hover {
+  transform: translateY(-1px);
+}
+
+.filter-chip__count {
+  opacity: 0.6;
+  font-size: 0.75rem;
+}
+
+.filter-chip.active {
+  color: #fff;
+  border-color: transparent;
+  background-color: var(--color-ink);
+}
+
+.filter-chip.tape-0.active {
+  background-color: var(--accent-coral);
+}
+
+.filter-chip.tape-1.active {
+  background-color: var(--accent-mint);
+}
+
+.filter-chip.tape-2.active {
+  background-color: var(--accent-sun);
+  color: var(--color-ink);
+}
+
+.filter-chip.tape-3.active {
+  background-color: var(--accent-violet);
+}
+
+.filter-chip.tape-4.active {
+  background-color: var(--accent-sky);
+}
+
+.result-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+}
+
+#sortButton.active {
+  background-color: var(--color-ink);
+  color: var(--color-card);
+  border-color: var(--color-ink);
+}
+
+#captionList {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem 2rem;
+}
+
+.caption-card {
+  position: relative;
+  background-color: var(--color-card);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem 1.25rem 1.25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: card-in 0.35s ease both;
+}
+
+.caption-card:hover,
+.caption-card:focus-visible {
+  transform: translateY(-4px) rotate(-0.5deg);
+  box-shadow: var(--shadow-strong);
+}
+
+.caption-card__tape {
+  position: absolute;
+  top: -0.6rem;
+  left: 1rem;
+  transform: rotate(-4deg);
+  padding: 0.3rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 4px;
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+}
+
+.caption-card__tape.tape-0 {
+  background-color: var(--accent-coral);
+}
+
+.caption-card__tape.tape-1 {
+  background-color: var(--accent-mint);
+}
+
+.caption-card__tape.tape-2 {
+  background-color: var(--accent-sun);
+  color: var(--color-ink);
+}
+
+.caption-card__tape.tape-3 {
+  background-color: var(--accent-violet);
+}
+
+.caption-card__tape.tape-4 {
+  background-color: var(--accent-sky);
+}
+
+.caption-card__content {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--color-ink-soft);
+  line-height: 1.55;
+  flex-grow: 1;
+  position: relative;
+  padding-left: 1.1rem;
+  margin-top: 0.75rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  white-space: pre-line;
+}
+
+.caption-card__content--modal {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+  font-size: 1.1rem;
+}
+
+.caption-card__content::before {
+  content: "\201C";
+  position: absolute;
+  left: -0.15rem;
+  top: -0.4rem;
+  font-size: 1.8rem;
+  color: var(--color-border);
+  font-family: var(--font-display);
+}
+
+.caption-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 0.75rem;
+  margin-top: 0.75rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.btn-copy {
+  background-color: var(--color-paper);
+  border: 1px solid var(--color-border);
+  color: var(--color-ink);
+  border-radius: 999px;
+  font-size: 0.8rem;
+}
+
+.btn-copy:hover {
+  background-color: var(--color-ink);
+  color: var(--color-card);
+  border-color: var(--color-ink);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--color-ink-soft);
+}
+
+.empty-state i {
+  font-size: 2.2rem;
+  color: var(--color-border);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--color-ink-soft);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-ink);
+  color: var(--color-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-strong);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1030;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.modal-content {
+  background-color: var(--color-card);
+  color: var(--color-ink);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+}
+
+.modal-content .caption-card__content {
+  padding-left: 0;
+}
+
+.modal-content .caption-card__content::before {
+  display: none;
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .caption-card,
+  .caption-card:hover,
+  .btn-icon,
+  .back-to-top {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .app-tagline h1 {
+    font-size: 1.5rem;
+  }
+
+  .caption-card {
+    padding: 1.75rem 1rem 1rem;
+  }
+}
