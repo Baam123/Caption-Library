@@ -4,10 +4,21 @@ const state = {
   sortAZ: false, 
 };
 
+function shuffleArray(array) {
+  const result = [...array];
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+const displayOrder = shuffleArray(captions);
+
 function getFilteredCaptions() {
   const keyword = state.searchQuery.trim().toLowerCase();
 
-  let result = captions.filter((caption) => {
+  let result = displayOrder.filter((caption) => {
     const matchCategory =
       state.activeCategory === "all" || caption.category === state.activeCategory;
 

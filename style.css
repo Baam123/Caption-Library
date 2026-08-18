@@ -286,6 +286,7 @@ a:focus-visible {
   -webkit-line-clamp: unset;
   overflow: visible;
   font-size: 1.1rem;
+  text-align: center;
 }
 
 .caption-card__content::before {
